@@ -1,0 +1,30 @@
+{
+  "name": "ek222re-examination-3",
+  "version": "1.0.0",
+  "description": "EXAM-3-1dv023",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv023/ek222re-examination-3.git"
+  },
+  "author": "Emma Källström ek222re@student.lnu.se",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv023/ek222re-examination-3/issues"
+  },
+  "homepage": "https://github.com/1dv023/ek222re-examination-3#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "octonode": "^0.9.5",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "standard": "^12.0.1"
+  }
+}
