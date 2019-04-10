@@ -56,10 +56,16 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
   function (req, res) {
     res.redirect('/success')
   })
+// Routes
+app.use('/success', require('./routes/github.js'))
+app.get('/', (req, res) => res.sendFile('auth.html', {
+  root: path.join(__dirname, '/public')
+}))
+app.get('/error', (req, res) => res.send('error signing in'))
 // starting the server
 const server = app.listen(port, (err) => {
   if (err) console.log(err)
-  else console.log('Application up and running on cscloud19.lnu.se:3000')
+  else console.log('Application up and running on cscloud19.lnu.se:3000 \nPress ctrl+c to terminate at any time')
 })
 // configuration for websocket
 const io = require('socket.io')(server)
