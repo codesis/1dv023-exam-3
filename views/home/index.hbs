@@ -1,0 +1,35 @@
+<div class="issueDiv">
+    <div class="eachIssue">
+        <h2>Issues</h2>
+    </div>
+    {{#if issues }}
+    <ul id="issueList">
+        {{#each issues }}
+        <li id={{id}}>
+            Title: {{title}}
+            <br>
+            Body: {{issueBody}}
+            <br>
+            Comments: {{comments}}
+            <br>
+            URL: {{issueURL}}
+            <br>
+            Created: {{created}}
+            <br>
+            Updated: {{updated}}
+            <br>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    No issue to display.
+    {{/if}}
+</div>
+<div>
+<div class="notifDiv">
+    <h3>Notifications</h3>
+</div>
+<ul id="notifList">
+
+</ul>
+</div>

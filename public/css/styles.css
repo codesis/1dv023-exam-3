@@ -1,0 +1,19 @@
+#id {
+    color: red;
+}
+.issueDiv {
+    background-color: burlywood;
+    color: darkmagenta;
+}
+.eachIssue {
+    color: darkgreen;
+}
+.issueList {
+    color: pink;
+}
+.notifDiv {
+    color: blue;
+}
+.notifList {
+    color: black;
+}
