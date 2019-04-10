@@ -14,7 +14,7 @@ const helmet = require('helmet')
 const app = express()
 app.use(helmet())
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8000
 
 app.engine('.hbs', hbs({
   defaultLayout: 'main',
