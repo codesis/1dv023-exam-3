@@ -20,8 +20,22 @@ router.route('/')
       .then(function (resp) {
         const context = {
           issues: resp.map(function (issue) {
-
+            return {
+              id: issue.id,
+              title: issue.title,
+              issueBody: issue.body,
+              comments: issue.comments,
+              issueURL: issue.url,
+              created: issue.created_at,
+              updated: issue.updated_at
+            }
           })
         }
+        res.render('home/index.hbs', context)
+      })
+      .catch(function (err) {
+        console.err(err)
       })
   })
+
+module.exports = router

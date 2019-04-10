@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // github webhook middleware
-const githubMiddleware = require('github-webhook-middleware')({ secret: process.env.HOOK_KEY })
+const githubMiddleware = require('github-webhook-middleware')({ secret: 'process.env.GITHUB_SECRET' })
 // passport authentication
 const passport = require('passport')
 app.use(passport.initialize())
@@ -41,8 +41,8 @@ passport.deserializeUser(function (obj, cb) {
 })
 // github authentication
 const GithubStrategy = require('passport-github').Strategy
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET
+const GITHUB_CLIENT_ID = 'process.env.GITHUB_CLIENT_ID'
+const GITHUB_CLIENT_SECRET = 'process.env.GITHUB_CLIENT_SECRET'
 passport.use(new GithubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
@@ -64,7 +64,7 @@ const server = app.listen(port, (err) => {
 // configuration for websocket
 const io = require('socket.io')(server)
 // config for webhooks
-app.post('/hookie', githubMiddleware, function (req, res) {
+app.post('/hooks/github/', githubMiddleware, function (req, res) {
   res.status(200)
   res.send()
   // for notification
