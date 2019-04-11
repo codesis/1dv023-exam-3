@@ -35,7 +35,7 @@ app.use(bodyParser.json())
 // starting the server
 const server = https.createServer({
 }, app).listen(port, () => {
-  console.log('Application started on https://localhost:' + port + '\nPress ctrl+c to terminate at any time')
+  console.log('Application started on cscloud19.lnu.se:' + port + '\nPress ctrl+c to terminate at any time')
 })
 // websocket server
 const io = require('socket.io')(server)
