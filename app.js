@@ -20,7 +20,7 @@ const app = express()
 app.use(helmet())
 
 const https = require('https')
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 3000
 
 app.engine('.hbs', hbs({
   defaultLayout: 'main',
@@ -32,6 +32,9 @@ app.use(express.static(path.join(__dirname, '/public/')))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+// routes
+app.use('/', require('./routes/home.js'))
+
 // starting the server
 const server = https.createServer({
 }, app).listen(port, () => {
@@ -39,6 +42,3 @@ const server = https.createServer({
 })
 // websocket server
 const io = require('socket.io')(server)
-
-// routes
-app.use('/', require('./routes/home.js'))
