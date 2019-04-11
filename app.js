@@ -34,8 +34,8 @@ app.use(bodyParser.json())
 
 // starting the server
 const server = https.createServer({
-  key: fs.readFileSync('/etc/letsencrypt/live/cscloud19.lnu.se/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/cscloud19.lnu.se/cert.pem')
+  key: fs.readFileSync('ssl_certificate_key'),
+  cert: fs.readFileSync('ssl_certificate')
 }, app).listen(port, () => {
   console.log('Application started on https://localhost:' + port + '\nPress ctrl+c to terminate at any time')
 })
