@@ -19,19 +19,18 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
+    "escape-html": "^1.0.3",
     "express": "^4.16.4",
+    "express-github-webhook": "^1.0.6",
     "express-handlebars": "^3.0.2",
-    "github-webhook-middleware": "0.0.2",
     "helmet": "^3.16.0",
     "octonode": "^0.9.5",
-    "passport": "^0.4.0",
-    "passport-github": "^1.1.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.18.11",
     "standard": "^12.0.1"
   }
 }
