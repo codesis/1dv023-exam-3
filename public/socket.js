@@ -1,5 +1,5 @@
 'use strict'
-// socket module
+// socket module, will be changed
 (function () {
   const socket = io()
 
