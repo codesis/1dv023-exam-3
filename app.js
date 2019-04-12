@@ -19,8 +19,8 @@ const GitHubWebhook = require('express-github-webhook')
 const app = express()
 app.use(helmet())
 
-// const https = require('https').Server(app)
-const io = require('socket.io')(app)
+const https = require('https').Server(app)
+const io = require('socket.io')(https)
 const port = process.env.PORT || 8080
 
 app.engine('.hbs', hbs({
