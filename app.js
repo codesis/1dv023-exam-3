@@ -40,5 +40,5 @@ app.use('/', require('./routes/homeRouter.js'))
 io.on('connection', function (socket) {
   console.log('Socket running')
 })
-// starting the server '192.168.20.50'
-https.listen(port, () => console.log('Server running on:' + port))
+// starting the server
+https.listen(port, '192.168.20.50', () => console.log('Server running' + port))
