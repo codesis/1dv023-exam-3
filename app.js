@@ -20,7 +20,8 @@ const app = express()
 app.use(helmet())
 
 const https = require('https')
-const port = process.env.PORT || 8000
+const hostname = 'localhost'
+const port = process.env.PORT || 3000
 
 app.engine('.hbs', hbs({
   defaultLayout: 'main',
@@ -33,12 +34,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // routes
-app.use('/', require('./routes/home.js'))
+app.use('/', require('./routes/homeRouter.js'))
 
 // starting the server
-const server = https.createServer({
-}, app).listen(port, () => {
-  console.log('Application started on cscloud19.lnu.se:' + port + '\nPress ctrl+c to terminate at any time')
-})
+app.listen(port, () => console.log('Server running on localhost' + port))
+
 // websocket server
-const io = require('socket.io')(server)
+// const io = require('socket.io')(server)

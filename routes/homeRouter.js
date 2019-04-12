@@ -6,7 +6,7 @@ const router = require('express').Router()
 
 // Render index page with login form
 router.route('/').get(function (req, res) {
-  res.render('home/index.hbs')
+  res.render('home/index')
 })
 
 module.exports = router

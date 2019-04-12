@@ -1,3 +1,15 @@
+html {
+    height: 100%;
+}
+* {
+    font: 16px 'Lucinda';
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding-top: 0;
+    background-color: pink;
+}
 #id {
     color: red;
 }
