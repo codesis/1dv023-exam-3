@@ -11,16 +11,16 @@ const hbs = require('express-handlebars')
 const path = require('path')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
-const escape = require('escape-html')
-const octonode = require('octonode')
-const fs = require('fs')
-const GitHubWebhook = require('express-github-webhook')
+// const escape = require('escape-html')
+// const octonode = require('octonode')
+// const fs = require('fs')
+// const GitHubWebhook = require('express-github-webhook')
 
 const app = express()
 app.use(helmet())
 
-const https = require('https').Server(app)
-const io = require('socket.io')(https)
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
 const port = process.env.PORT || 8080
 
 app.engine('.hbs', hbs({
@@ -35,11 +35,13 @@ app.use(bodyParser.json())
 
 // routes
 app.use('/', require('./routes/homeRouter.js'))
-
-// starting the server
-https.listen(port, () => console.log('Server running' + port))
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/socket.html'))
+})
 
 // websocket server
-io.on('connection', function (socket) {
-  console.log('Socket running')
+io.on('connection', (socket) => {
+
 })
+// starting the server
+app.listen(port, () => console.log('Server running' + port))
