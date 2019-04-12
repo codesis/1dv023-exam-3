@@ -37,7 +37,7 @@ app.use(bodyParser.json())
 app.use('/', require('./routes/homeRouter.js'))
 
 // starting the server
-app.listen(port, () => console.log('Server running' + port))
+https.listen(port, () => console.log('Server running' + port))
 
 // websocket server
 io.on('connection', function (socket) {
