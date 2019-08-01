@@ -2,34 +2,31 @@
     <div class="eachIssue">
         <h2>Issues</h2>
     </div>
-    {{#if issues }}
     <ul id="issueList">
         {{#each issues }}
-        <li id={{id}}>
+        <li id={{number}}>
             Title: {{title}}
             <br>
-            Body: {{issueBody}}
+            Body: {{body}}
             <br>
             Comments: {{comments}}
             <br>
-            URL: {{issueURL}}
+            URL: {{link}}
             <br>
             Created: {{created}}
             <br>
             Updated: {{updated}}
             <br>
         </li>
+        <br>
+        {{else}}
+        <h4>No issue to display.</h4>
         {{/each}}
     </ul>
-    {{else}}
-    No issue to display.
-    {{/if}}
 </div>
 <div>
-<div class="notifDiv">
-    <h3>Notifications</h3>
-</div>
-<ul id="notifList">
-
-</ul>
+    <div id="notifDiv">
+        <h3>Notifications</h3>
+        <ul id="messages"></ul>
+    </div>
 </div>

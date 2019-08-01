@@ -14,13 +14,18 @@ const helmet = require('helmet')
 // const escape = require('escape-html')
 // const octonode = require('octonode')
 // const fs = require('fs')
-// const GitHubWebhook = require('express-github-webhook')
+
+const GitHubWebhook = require('express-github-webhook')
+const webhook = GitHubWebhook({
+  path: '/',
+  secret: process.env.GITHUB_TOKEN
+})
 
 const app = express()
 app.use(helmet())
 
-const http = require('http').Server(app)
-const io = require('socket.io')(http)
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 const port = process.env.PORT
 
 app.engine('.hbs', hbs({
@@ -28,22 +33,81 @@ app.engine('.hbs', hbs({
   extname: '.hbs'
 }))
 app.set('view engine', '.hbs')
-app.use(express.static(path.join(__dirname, '/public/')))
 
 app.use(bodyParser.urlencoded({
   extended: true
 }))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(webhook)
+
+// websocket server
+io.on('connection', (client) => {
+  webhook.on('issues', (repo, data) => {
+    const action = data.action
+    const id = data.issue.id
+    const number = data.issue.number
+    const user = data.issue.user.login
+    const link = data.issue.html_url
+    const title = data.issue.title
+    const body = data.issue.body
+    const comments = data.issue.comments
+    const created = data.issue.created_at
+    const updated = data.issue.updated_at
+
+    client.emit('issue', {
+      action: action,
+      title: title,
+      user: user
+    })
+
+    if (action === 'opened' || action === 'reopened') {
+      client.emit('listOfIssues', {
+        title: title,
+        body: body,
+        link: link,
+        comments: comments,
+        created: created,
+        updated: updated,
+        number: number,
+        id: id
+      })
+    } else if (action === 'closed') {
+      client.emit('removeIssue', {
+        title: title,
+        body: body,
+        link: link,
+        comments: comments,
+        created: created,
+        updated: updated,
+        number: number,
+        id: id
+      })
+    }
+  })
+  webhook.on('issue_comment', (repo, data) => {
+    const action = data.action
+    const id = data.issue.id
+    const user = data.comment.user.login
+    const title = data.issue.title
+    const comments = data.issue.comments
+    const comment = data.comment.body
+    const number = data.issue.number
+
+    client.emit('issue_comment', {
+      action: action,
+      title: title,
+      user: user,
+      comment: comment,
+      comments: comments,
+      number: number,
+      id: id
+    })
+  })
+})
 
 // routes
 app.use('/', require('./routes/homeRouter.js'))
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/socket.html'))
-})
 
-// websocket server
-io.on('connection', (socket) => {
-
-})
 // starting the server
-app.listen(port, () => console.log('Server running' + port))
+server.listen(port, () => console.log('Server running on port ' + port))

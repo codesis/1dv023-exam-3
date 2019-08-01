@@ -3,7 +3,7 @@
 require('dotenv').config()
 const router = require('express').Router()
 const github = require('octonode')
-const client = github.client(process.env.GITHUBTOKEN)
+const client = github.client(process.env.GITHUB_TOKEN)
 const repo = client.repo('1dv023/ek222re-examination-3')
 
 // Render index page with login form
@@ -21,9 +21,9 @@ router.route('/').get(function (req, res) {
           title: issue.title,
           body: issue.body,
           link: issue.html_url,
-          created: issue.created,
-          updated: issue.updated,
-          commentsCount: issue.comments
+          created: issue.created_at,
+          updated: issue.updated_at,
+          comments: issue.comments
         }
       })
     }
