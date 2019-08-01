@@ -26,7 +26,7 @@ app.use(helmet())
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 app.engine('.hbs', hbs({
   defaultLayout: 'main',
