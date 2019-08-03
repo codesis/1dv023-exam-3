@@ -42,7 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(webhook)
 
 // websocket server
-io.on('connection', (client) => {
+io.on('connection', function (socket) {
+  console.log('Connected')
   webhook.on('issues', (repo, data) => {
     const action = data.action
     const id = data.issue.id
@@ -55,14 +56,14 @@ io.on('connection', (client) => {
     const created = data.issue.created_at
     const updated = data.issue.updated_at
 
-    client.emit('issue', {
+    socket.emit('issue', {
       action: action,
       title: title,
       user: user
     })
 
     if (action === 'opened' || action === 'reopened') {
-      client.emit('listOfIssues', {
+      socket.emit('listOfIssues', {
         title: title,
         body: body,
         link: link,
@@ -73,7 +74,7 @@ io.on('connection', (client) => {
         id: id
       })
     } else if (action === 'closed') {
-      client.emit('removeIssue', {
+      socket.emit('removeIssue', {
         title: title,
         body: body,
         link: link,
@@ -85,6 +86,7 @@ io.on('connection', (client) => {
       })
     }
   })
+
   webhook.on('issue_comment', (repo, data) => {
     const action = data.action
     const id = data.issue.id
@@ -94,7 +96,7 @@ io.on('connection', (client) => {
     const comment = data.comment.body
     const number = data.issue.number
 
-    client.emit('issue_comment', {
+    socket.emit('issue_comment', {
       action: action,
       title: title,
       user: user,
@@ -107,7 +109,7 @@ io.on('connection', (client) => {
 })
 
 // routes
-app.use('/', require('./routes/homeRouter.js'))
+app.get('/', require('./routes/homeRouter.js'))
 
 // starting the server
 server.listen(port, () => console.log('Server running on port ' + port))

@@ -8,21 +8,11 @@
 </head>
 
 <body>
-    <h1>RTW ISSUES</h1>
-
     <div id="main">
         {{{body}}}
     </div>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io.connect()
-
-        socket.on('issue', function (data) {
-            addResponse('New issue! User: ' + data.user
-                + ', Action: ' + data.action + ', Title: ' + data.title)
-        })
-
-    </script>
+    <script src="/javascript/script.js"></script>
 </body>
 
 </html>

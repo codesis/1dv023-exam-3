@@ -2,20 +2,21 @@
     <div class="eachIssue">
         <h2>Issues</h2>
     </div>
+    <ul id="issue" class="issueList"></ul>
     <ul id="issueList">
-        {{#each issues }}
-        <li id={{number}}>
-            Title: {{title}}
+        {{#each issues}}
+        <li class="issue" id={{number}}>
+            <h3>Title: {{title}}</h3>
             <br>
-            Body: {{body}}
+            <span class="body">Description: {{body}}</span>
             <br>
-            Comments: {{comments}}
+            <p>Comments: {{comments}}</p>
             <br>
-            URL: {{link}}
+            <a href="{{link}}">{{link}}</a>
             <br>
-            Created: {{created}}
+            <p>Created: {{created}}</p>
             <br>
-            Updated: {{updated}}
+            <p>Updated: {{updated}}</p>
             <br>
         </li>
         <br>

@@ -6,7 +6,7 @@ const github = require('octonode')
 const client = github.client(process.env.GITHUB_TOKEN)
 const repo = client.repo('1dv023/ek222re-examination-3')
 
-// Render index page with login form
+// Render index page
 router.route('/').get(function (req, res) {
   repo.issues((err, data) => {
     if (err) {
