@@ -56,7 +56,7 @@ body {
 .issueDiv {
     color: #012B3B;
     font-size: 22px;
-    max-height: auto;
+    overflow: auto;
 }
 
 .eachIssue {
