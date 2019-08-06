@@ -1,19 +1,20 @@
-<div class="issueDiv">
-    <div class="eachIssue">
-        <h2>Issues</h2>
-    </div>
-    <ul id="issue" class="issueList"></ul>
-    <ul id="issueList">
-        {{#each issues}}
-        {{else}}
-        <h4>No issue to display.</h4>
-        {{/each}}
-    </ul>
-</div>
 <div>
     <div id="notifDiv">
         <span class="closebtn" onclick="clearMessages()">&times;</span>
         <strong>Information!</strong>
         <ul id="messages"></ul>
     </div>
+</div>
+
+<div class="issueDiv">
+    <div class="eachIssue">
+        <h2>Issues</h2>
+    </div>
+    <ul id="issue" class="issueList"></ul>
+    <ul id="issueList">
+        {{#if issues}}
+        {{else}}
+        <h4>No issue to display.</h4>
+        {{/if}}
+    </ul>
 </div>
