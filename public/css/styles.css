@@ -5,33 +5,62 @@ html {
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans';
-    font-size: 18px;
 }
 
 body {
     padding-top: 0;
     background-image: url(../images/background.jpg);
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 6.25%;
+    font-family: 'Blinker', sans-serif;
+}
+
+@keyframes colorized {
+    0% {
+        color: #012B3B;
+    }
+
+    50% {
+        color: #036E7E;
+    }
+
+    100% {
+        color: #64B7BF;
+    }
+
+}
+
+#pagetitle {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 62px;
+    color: #012B3B;
+    animation-name: colorized;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #main {
     background-color: rgb(248, 248, 255, 0.8);
     text-align: center;
-    width: 50%;
-    margin-left: 12.5%;
-    margin-top: 12.5%;
+    max-width: 900px;
+    margin: auto;
     padding: 5;
     border-radius: 6px;
 }
 
 .issueDiv {
-    color: darkmagenta;
+    color: #012B3B;
+    font-size: 22px;
+    max-height: auto;
 }
 
 .eachIssue {
-    color: darkgreen;
+    color: #012B3B;
 }
 
 li {
@@ -42,9 +71,13 @@ li {
     color: rgb(165, 110, 119);
 }
 
+a {
+    font-size: 16px;
+}
+
 #notifDiv {
     display: table;
-    margin: 5% 10%;
+    margin: 8% 10%;
     width: 500px;
     background-color: #2f4670;
     color: rgb(255, 255, 255);
@@ -57,6 +90,14 @@ li {
     text-align: center;
     line-height: 2.5;
     box-shadow: 0 0 5px black;
+}
+
+.far {
+    position: relative;
+    top: 4px;
+    right: 160px;
+    font-size: 26px;
+    color: #64B7BF;
 }
 
 .closebtn {
@@ -78,4 +119,23 @@ li {
 #notifList {
     color: black;
     background-color: burlywood;
+}
+
+span,
+strong {
+    font-size: 20px;
+}
+
+#messages {
+    font-size: 18px;
+}
+
+footer {
+    position: fixed;
+    right: 5px;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: right;
+    letter-spacing: 2.5px;
 }

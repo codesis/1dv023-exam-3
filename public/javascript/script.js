@@ -7,8 +7,16 @@
 let socket = io()
 
 socket.on('issue', function (data) {
-    addResponse('New issue! User: ' + data.user +
-        ', Action: ' + data.action + ', Title: ' + data.title)
+    if (data.action === 'opened') {
+        addResponse('New issue! User: ' + data.user +
+            ', Title: ' + data.title)
+    }
+    if (data.action === 'reopened') {
+        addResponse('Reopened issue! User: ' + data.user + ', Title: ' + data.title)
+    }
+    if (data.action === 'closed') {
+        addResponse('Closed issue! User: ' + data.user + ', Title: ' + data.title)
+    }
 })
 
 socket.on('listOfIssues', (data) => {
@@ -30,12 +38,6 @@ socket.on('issue_comment', (data) => {
 // addResponse shows the notification if there is one
 function addResponse(message) {
     document.getElementById('notifDiv').style.display = 'block'
-
-    setTimeout(function () {
-        if (messages.length > 0) {
-            messages.remove()
-        }
-    }, 5000)
 
     const text = document.createTextNode(message)
     const li = document.createElement('li')
@@ -87,6 +89,9 @@ function addIssue(number, title, desc, link, comment, created, updated) {
     const updatd = document.createTextNode('Updated: ' + updated)
     pupdated.appendChild(updatd)
 
+    const br = document.createElement('br')
+
+
     div.appendChild(h3)
     div.appendChild(pbody)
     div.appendChild(a)
@@ -95,6 +100,8 @@ function addIssue(number, title, desc, link, comment, created, updated) {
     div.appendChild(pupdated)
     li.appendChild(div)
     issue.appendChild(li)
+    issue.appendChild(br)
+
 
 }
 
