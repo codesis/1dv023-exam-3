@@ -5,21 +5,6 @@
     <ul id="issue" class="issueList"></ul>
     <ul id="issueList">
         {{#each issues}}
-        <li class="issue" id={{number}}>
-            <h3>Title: {{title}}</h3>
-            <br>
-            <span class="body">Description: {{body}}</span>
-            <br>
-            <p>Comments: {{comments}}</p>
-            <br>
-            <a href="{{link}}">{{link}}</a>
-            <br>
-            <p>Created: {{created}}</p>
-            <br>
-            <p>Updated: {{updated}}</p>
-            <br>
-        </li>
-        <br>
         {{else}}
         <h4>No issue to display.</h4>
         {{/each}}
@@ -27,7 +12,8 @@
 </div>
 <div>
     <div id="notifDiv">
-        <h3>Notifications</h3>
+        <span class="closebtn" onclick="clearMessages()">&times;</span>
+        <strong>Information!</strong>
         <ul id="messages"></ul>
     </div>
 </div>

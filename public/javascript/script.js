@@ -38,6 +38,10 @@ function addResponse(message) {
     socket.emit('issue')
 }
 
+function clearMessages() {
+    document.getElementById('messages').innerHTML = ''
+}
+
 function addIssue(number, title, desc, link, comment, created, updated) {
     const issue = document.getElementById('issue')
 
