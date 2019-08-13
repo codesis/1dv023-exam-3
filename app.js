@@ -11,9 +11,6 @@ const hbs = require('express-handlebars')
 const path = require('path')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
-// const escape = require('escape-html')
-// const octonode = require('octonode')
-// const fs = require('fs')
 
 const GitHubWebhook = require('express-github-webhook')
 const webhook = GitHubWebhook({

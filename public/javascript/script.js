@@ -100,7 +100,7 @@ function addIssue(number, title, desc, link, comment, created, updated) {
     div.appendChild(pupdated)
     li.appendChild(div)
     issue.appendChild(li)
-    issue.appendChild(br)
+    li.appendChild(br)
 
 
 }
