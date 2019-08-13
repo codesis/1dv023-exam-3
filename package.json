@@ -17,21 +17,18 @@
   },
   "homepage": "https://github.com/1dv023/ek222re-examination-3#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "dotenv": "^7.0.0",
-    "escape-html": "^1.0.3",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-github-webhook": "^1.0.6",
-    "express-handlebars": "^3.0.2",
-    "helmet": "^3.16.0",
+    "express-handlebars": "^3.1.0",
+    "helmet": "^3.20.0",
     "octonode": "^0.9.5",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
-    "nodemon": "^1.18.11",
+    "nodemon": "^1.19.1",
     "standard": "^12.0.1"
   }
 }
