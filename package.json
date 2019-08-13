@@ -27,7 +27,6 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.1",
     "nodemon": "^1.19.1",
     "standard": "^12.0.1"
   }
