@@ -30,13 +30,21 @@ When my application was running in development it was developing and could diffe
 While in production security packages and settings were complete before the application was put in production and the possible bugs had been taken care of before. 
 
 Which extra modules did you use in the assignment? Motivate the use of them and how you have make sure that they are secure enough for production
+
 body-parser
+
 dotenv
+
 express
+
 express-github-webhook
+
 express-handlebars
+
 helmet
+
 octonode
+
 socket.io
 
 Have you implemented any extra features (see below) that could motivate a higher grade of this assignment? If so, describe them.
