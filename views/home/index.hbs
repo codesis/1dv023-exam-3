@@ -1,3 +1,5 @@
+<h1 id="pagetitle">Real time Issues</h1>
+
 <div>
     <div id="notifDiv">
         <i class="far fa-bell"></i>
@@ -7,11 +9,28 @@
     </div>
 </div>
 
-<div class="issueDiv">
-    <div class="eachIssue">
+<div id="main">
+    <div class="issueDiv">
+        <div class="eachIssue">
+        </div>
+        <ul id="issue" class="issueList"></ul>
+        <ul class="list">
+            {{#each issues}}
+            <li class="issue" id="li{{number}}">
+                <div id="ribbon">
+                    <h3>Title: {{title}}</h3>
+                    <br>
+                    <p class="body">Description: {{body}}</p>
+                    <br>
+                    <a href="{{link}}">{{link}}</a>
+                    <p>No of comments: {{comments}}</p>
+                    <p>Created: {{created}}</p>
+                    <p>Updated: {{updated}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
     </div>
-    <ul id="issue" class="issueList"></ul>
-    {{#if issues}}
-    {{/if}}
-    </ul>
 </div>
+
+<footer>Created by: Emma Källström</footer>
